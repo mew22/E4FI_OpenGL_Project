@@ -200,10 +200,6 @@ public:
 		if (tonormalize) normalize(vertices);
 	}
 	
-	void readScene2(string filename, bool tonormalize = 0) {
-
-	}
-
 	void computeTangent(int v0, int v1, int v2, float & x, float & y, float & z)
 	{
 		float du1 = textures[2*v1] - textures[2*v0] ;
