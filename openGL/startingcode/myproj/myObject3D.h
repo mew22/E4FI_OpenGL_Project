@@ -106,6 +106,11 @@ public:
   }
 
   
+
+  void readScene2(string filename, bool tonormalize = 0)
+  {	
+	  //lol
+  }
 	void readScene(string filename, bool tonormalize = 0)
 	{
 		clear();
