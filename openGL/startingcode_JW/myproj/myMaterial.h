@@ -6,4 +6,4 @@ class myMaterial
 	GLfloat material_Ks[4]; //specular color
 	GLfloat material_Sh; //shininess coefficient
 	string material_name; //name of the material
-};
+};

@@ -10,6 +10,15 @@
 
 using namespace std;
 
+
+class mySubObject3D
+{
+public:
+	myMaterial *material;
+	int start_index, end_index;
+};
+
+
 class myObject3D
 {
 public:
@@ -20,7 +29,9 @@ public:
 	vector<GLfloat> vertices; //vertices array.
 	vector<GLuint> indices; //indices array.
 	vector<GLfloat> normals; //normals array.
+	
 
+	vector<mySubObject3D *> parts; //contains subparts of the scene.
 	//Model matrix
 	glm::mat4 model_matrix;
 	
@@ -242,4 +253,25 @@ public:
 		glm::mat4 tmp = glm::rotate((float) angle, glm::vec3(axis_x, axis_y, axis_z));
 		model_matrix = tmp * model_matrix;
 	}
+	void scale(double axis_x, double axis_y, double axis_z)
+	{
+		glm::mat4 tmp = glm::scale(glm::vec3(axis_x, axis_y, axis_z));
+		model_matrix = tmp * model_matrix;
+	}
+
+
+	void readScene(char *filename)
+	{
+		string s, t;
+		string tmp;
+		ifstream fin(filename);
+
+		if (!fin.is_open()) cout << "Unable to open the file";
+
+		while (getline(fin, s))
+		{
+			stringstream myline(s);
+		}
+	}
+
 };
