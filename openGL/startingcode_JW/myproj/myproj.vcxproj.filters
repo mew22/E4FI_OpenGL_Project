@@ -18,9 +18,6 @@
     <None Include="ReadMe.txt" />
     <None Include="shaders\light.frag.glsl" />
     <None Include="shaders\light.vert.glsl" />
-    <None Include="TheCarnival.mtl">
-      <Filter>Resource Files</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -67,10 +64,5 @@
     <ClCompile Include="point3d.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="TheCarnival.obj">
-      <Filter>Resource Files</Filter>
-    </Object>
   </ItemGroup>
 </Project>

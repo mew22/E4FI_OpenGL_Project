@@ -85,7 +85,6 @@
     <None Include="ReadMe.txt" />
     <None Include="shaders\light.frag.glsl" />
     <None Include="shaders\light.vert.glsl" />
-    <None Include="TheCarnival.mtl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="myLight.h" />
@@ -107,9 +106,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="vector3d.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Object Include="TheCarnival.obj" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

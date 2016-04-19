@@ -31,7 +31,8 @@ public:
 	vector<GLfloat> normals; //normals array.
 	
 
-	vector<mySubObject3D *> parts; //contains subparts of the scene.
+	vector<mySubObject3D *> parts; //contains subparts of the scene.
+
 	//Model matrix
 	glm::mat4 model_matrix;
 	
