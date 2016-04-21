@@ -1,3 +1,5 @@
+#pragma once
+
 #include <math.h>
 #include <GL/glew.h>
 #include <vector>
@@ -5,10 +7,15 @@
 #include <fstream>
 #include "vector3d.h"
 #include "myMaterial.h"
+#include "myTexture.h"
 
 class mySubObject3D
 {
-	public:
-		//myMaterial *material;
-		int start_index, end_index;
-};
+public:
+	//myTexture texture, bump, cubemap;
+	myMaterial material;
+	int start, end; //then indices are (start, end-1).
+	string name;
+
+	mySubObject3D(int s, int e) { start = s; end = e; }
+};

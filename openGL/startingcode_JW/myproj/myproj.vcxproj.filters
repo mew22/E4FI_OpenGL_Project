@@ -44,6 +44,12 @@
     <ClInclude Include="myLight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="mySubObject3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="myTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -62,6 +68,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="point3d.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="myMaterial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="myTexture.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

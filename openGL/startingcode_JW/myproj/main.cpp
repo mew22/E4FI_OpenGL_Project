@@ -190,25 +190,7 @@ void display()
 	glUniformMatrix4fv(normal_matrix_loc, 1, GL_FALSE, &normal_matrix[0][0]);
 
 
-	// 3.5
 
-	vector<GLfloat> colors;
-	vector<GLfloat> direction;
-	vector<GLfloat> position;
-	vector<GLint> type;
-
-	for(int i = 0; i<nbLight; i++){
-		colors.insert(colors.end(), lights[i].color, lights[i].color+4);
-		direction.insert(direction.end(), lights[i].direction, lights[i].direction+4);
-		position.insert(position.end(), lights[i].position, lights[i].position+4);
-		type.push_back(lights[i].type);
-	}
-
-	
-	glUniform4fv(glGetUniformLocation(shaderprogram1, "light_colors"), nbLight, &(colors.front()));
-	glUniform4fv(glGetUniformLocation(shaderprogram1, "light_position"), nbLight, &(position.front()));
-	glUniform3fv(glGetUniformLocation(shaderprogram1, "light_direction"), nbLight, &(direction.front()));
-	glUniform1iv(glGetUniformLocation(shaderprogram1, "light_type"), nbLight, &(type.front()));
 
 	
 	// 3.6. Display the light
@@ -219,9 +201,9 @@ void display()
 		lights[i].drawLight(shaderprogram1);
 	}
 	
-	obj1->displayObject(shaderprogram1,view_matrix);
+	//obj1->displayObject(shaderprogram1,view_matrix);
 	//obj2->displayObject(shaderprogram1,view_matrix);
-
+	obj3->displayScene(view_matrix);
 
 
 	glFlush();
@@ -243,27 +225,29 @@ void init()
 
 
 
-	obj1 = new myObject3D();
+
+
+	/*obj1 = new myObject3D();
 	obj1->readMesh("apple.obj");
 	obj1->computeNormals();
-	obj1->createObjectBuffers();
+	obj1->createObjectBuffers();*/
 
 	// Second object
-	obj2 = new myObject3D();
+	/*obj2 = new myObject3D();
 	obj2->readMesh("hand.obj");
 	obj2->computeNormals();
 	obj2->createObjectBuffers();
-	obj2->translate(4,0,0);
+	obj2->translate(4,0,0);*/
 	
 
-	/*
+	
 	// Maya Scene
-	obj3 = new myObject3D();
-	obj3->readScene("Matinee.obj");
+	obj3 = new myObject3D(shaderprogram1);
+	obj3->readScene("museumhallRD.obj");
 	obj3->computeNormals();
 	obj3->createObjectBuffers();
 	obj3->translate(10,0,0);
-	*/
+	
 
 
 	glClearColor(0.4, 0.4, 0.4, 0);
@@ -276,8 +260,8 @@ void init()
 	lights = (myLight*)malloc(nbLight*sizeof(myLight));
 
 	lights[0].color[0] = 1; lights[0].color[1] = 0; lights[0].color[2] = 0; lights[0].color[3] = 0; 
-	lights[1].color[0] = 0; lights[1].color[1] = 1; lights[1].color[2] = 0; lights[1].color[3] = 0; 
-	lights[2].color[0] = 0; lights[2].color[1] = 0; lights[2].color[2] = 1; lights[2].color[3] = 0; 
+	lights[1].color[0] = 1; lights[1].color[1] = 1; lights[1].color[2] = 1; lights[1].color[3] = 0; 
+	lights[2].color[0] = 1; lights[2].color[1] = 1; lights[2].color[2] = 1; lights[2].color[3] = 0; 
 
 	lights[0].position[0] = 1; lights[0].position[1] = 2; lights[0].position[2] = 0; lights[0].position[3] = 0; 
 	lights[1].position[0] = 0; lights[1].position[1] = 2; lights[1].position[2] = 0; lights[1].position[3] = 0; 
@@ -292,6 +276,26 @@ void init()
 	lights[2].type = 2; // spotlight
 
 	glUniform1i(glGetUniformLocation(shaderprogram1, "nbLights"), nbLight);
+
+	// 3.5
+
+	vector<GLfloat> colors;
+	vector<GLfloat> direction;
+	vector<GLfloat> position;
+	vector<GLint> type;
+
+	for (int i = 0; i<nbLight; i++){
+		colors.insert(colors.end(), lights[i].color, lights[i].color + 4);
+		direction.insert(direction.end(), lights[i].direction, lights[i].direction + 4);
+		position.insert(position.end(), lights[i].position, lights[i].position + 4);
+		type.push_back(lights[i].type);
+	}
+
+
+	glUniform4fv(glGetUniformLocation(shaderprogram1, "light_colors"), nbLight, &(colors.front()));
+	glUniform4fv(glGetUniformLocation(shaderprogram1, "light_position"), nbLight, &(position.front()));
+	glUniform3fv(glGetUniformLocation(shaderprogram1, "light_direction"), nbLight, &(direction.front()));
+	glUniform1iv(glGetUniformLocation(shaderprogram1, "light_type"), nbLight, &(type.front()));
 
 }
 

@@ -20,7 +20,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -90,6 +90,8 @@
     <ClInclude Include="myLight.h" />
     <ClInclude Include="myMaterial.h" />
     <ClInclude Include="myObject3D.h" />
+    <ClInclude Include="mySubObject3D.h" />
+    <ClInclude Include="myTexture.h" />
     <ClInclude Include="point3d.h" />
     <ClInclude Include="shaders.h" />
     <ClInclude Include="stdafx.h" />
@@ -98,7 +100,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="myMaterial.cpp" />
     <ClCompile Include="myproj.cpp" />
+    <ClCompile Include="myTexture.cpp" />
     <ClCompile Include="point3d.cpp" />
     <ClCompile Include="shaders.cpp" />
     <ClCompile Include="stdafx.cpp">
