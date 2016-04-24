@@ -340,7 +340,7 @@ public:
 	}
 	void readScene(string filename, bool tonormalize = 0)
 	{
-		cout << "Start of read scene, please wait..." << endl;
+		cout << "Starting read scene of " << filename << ", please wait..." << endl;
 		clear();
 		int i = 0;
 		string s, t, u, v, mtlfilename;

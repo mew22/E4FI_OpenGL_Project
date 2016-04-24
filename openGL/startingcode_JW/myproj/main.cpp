@@ -243,9 +243,9 @@ void init()
 	
 	// Maya Scene
 	obj3 = new myObject3D(shaderprogram1);
-	//obj3->readScene("museumhallRD.obj");
-	//obj3->readScene("TheCarnival.obj");
-	obj3->readScene("portal1.obj");
+	//obj3->readScene("test.obj");
+	obj3->readScene("TheCarnival.obj");
+	//obj3->readScene("portal1.obj");
 	if (obj3->normals.size() == 0)
 		obj3->computeNormals();
 	obj3->createObjectBuffers();
