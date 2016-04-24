@@ -4,6 +4,7 @@ Kd 0.50 0.50 0.50
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
+map_Kd ./maps/bones.ppm
 newmtl lambert2SG
 illum 4
 Kd 0.17 0.17 0.17
@@ -17,6 +18,7 @@ Kd 0.96 0.92 0.34
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 Ni 1.00
+map_Kd ./maps/bones.ppm
 newmtl lambert4SG
 illum 4
 Kd 0.98 0.98 0.98

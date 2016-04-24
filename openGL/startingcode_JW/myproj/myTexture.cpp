@@ -1,4 +1,6 @@
 #include "StdAfx.h"
+#include <fstream>
+#include <iostream>
 #include "myTexture.h"
 
 myTexture::myTexture()
@@ -15,8 +17,11 @@ GLubyte * myTexture::readFile(char *filename, int & w, int & h)
 	int maxVal;
 
 	if( (inFile = fopen(filename, "rb")) == NULL) {
-		return 0;
+		std::cout << "Unable to open the ppm file";
+		getchar();
+		exit(1);
 	}
+
 
 	//Read file type identifier (magic number)
 	fgets(buffer, sizeof(buffer), inFile);

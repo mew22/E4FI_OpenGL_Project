@@ -243,37 +243,35 @@ void init()
 	
 	// Maya Scene
 	obj3 = new myObject3D(shaderprogram1);
-	obj3->readScene("museumhallRD.obj");
-	obj3->computeNormals();
+	//obj3->readScene("museumhallRD.obj");
+	//obj3->readScene("TheCarnival.obj");
+	obj3->readScene("test.obj");
+	if (obj3->normals.size() == 0)
+		obj3->computeNormals();
 	obj3->createObjectBuffers();
-	obj3->translate(10,0,0);
-	
-
-
-	glClearColor(0.4, 0.4, 0.4, 0);
 
 
 
 	// 3.5
-	nbLight = 3;
+	nbLight = 2;
 
 	lights = (myLight*)malloc(nbLight*sizeof(myLight));
 
-	lights[0].color[0] = 1; lights[0].color[1] = 0; lights[0].color[2] = 0; lights[0].color[3] = 0; 
+	lights[0].color[0] = 1; lights[0].color[1] = 1; lights[0].color[2] = 1; lights[0].color[3] = 1; 
 	lights[1].color[0] = 1; lights[1].color[1] = 1; lights[1].color[2] = 1; lights[1].color[3] = 0; 
-	lights[2].color[0] = 1; lights[2].color[1] = 1; lights[2].color[2] = 1; lights[2].color[3] = 0; 
+	//lights[2].color[0] = 1; lights[2].color[1] = 1; lights[2].color[2] = 1; lights[2].color[3] = 0; 
 
-	lights[0].position[0] = 1; lights[0].position[1] = 2; lights[0].position[2] = 0; lights[0].position[3] = 0; 
+	lights[0].position[0] = -67.6; lights[0].position[1] = 99.9; lights[0].position[2] = -194; lights[0].position[3] = 0; 
 	lights[1].position[0] = 0; lights[1].position[1] = 2; lights[1].position[2] = 0; lights[1].position[3] = 0; 
-	lights[2].position[0] = -1; lights[2].position[1] = 2; lights[2].position[2] = 0; lights[2].position[3] = 0; 
+	//lights[2].position[0] = -1; lights[2].position[1] = 2; lights[2].position[2] = 0; lights[2].position[3] = 0; 
 
 	lights[0].direction[0] = -1; lights[0].direction[1] = 2; lights[0].direction[2] = 0; lights[0].direction[3] = 0; 
 	lights[1].direction[0] = 0; lights[1].direction[1] = 2; lights[1].direction[2] = 0; lights[1].direction[3] = 0; 
-	lights[2].direction[0] = 0; lights[2].direction[1] = 2; lights[2].direction[2] = 0; lights[2].direction[3] = 0; 
+	//lights[2].direction[0] = 0; lights[2].direction[1] = 2; lights[2].direction[2] = 0; lights[2].direction[3] = 0; 
 	
 	lights[0].type = 0; // point light
 	lights[1].type = 1; // direction light
-	lights[2].type = 2; // spotlight
+	//lights[2].type = 2; // spotlight
 
 	glUniform1i(glGetUniformLocation(shaderprogram1, "nbLights"), nbLight);
 
@@ -296,6 +294,13 @@ void init()
 	glUniform4fv(glGetUniformLocation(shaderprogram1, "light_position"), nbLight, &(position.front()));
 	glUniform3fv(glGetUniformLocation(shaderprogram1, "light_direction"), nbLight, &(direction.front()));
 	glUniform1iv(glGetUniformLocation(shaderprogram1, "light_type"), nbLight, &(type.front()));
+
+
+	//glUniform1i(glGetUniformLocation(shaderprogram1, "tex"), 8);
+
+
+	//glDisable(GL_TEXTURE_2D);
+	glClearColor(0.4, 0.4, 0.4, 0);
 
 }
 

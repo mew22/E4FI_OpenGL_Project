@@ -12,8 +12,8 @@
 class mySubObject3D
 {
 public:
-	//myTexture texture, bump, cubemap;
-	myMaterial material;
+	myTexture *texture = nullptr, *bump = nullptr, *cubemap = nullptr;
+	myMaterial *material = nullptr;
 	int start, end; //then indices are (start, end-1).
 	string name;
 
