@@ -39,6 +39,7 @@ GLubyte * myTexture::readFile(char *filename, int & w, int & h)
 	do fgets(buffer, sizeof (buffer), inFile);
 	while (buffer[0] == '#');
 	sscanf (buffer, "%d %d", &w, &h);
+	//h *= u; w *= v;
 
 	//Read maximum pixel value (usually 255)
 	do fgets (buffer, sizeof (buffer), inFile);
@@ -64,6 +65,7 @@ GLubyte * myTexture::readFile(char *filename, int & w, int & h)
 bool myTexture::readTexture(char *filename)
 { 
 	GLubyte *mytexture = readFile(filename, width, height);
+	//glGenerateMipmap(GL_TEXTURE_2D);
 	glGenTextures(1, &texName) ; 
     glBindTexture (GL_TEXTURE_2D, texName) ; 
 

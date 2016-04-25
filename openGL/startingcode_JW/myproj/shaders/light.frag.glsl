@@ -43,12 +43,12 @@ vec4 computeLight(  const in vec3 eyepos, const in vec3 mypos, const in vec3 lig
 	vec4 color = mycolor;
 	
     //point-lights
-	if (mylight_type == 1) {
+	if (mylight_type == 0) {
 	      color =  ka + kd * mylight_color * max( dot(lightdir, normal), 0.0) +
 				   ks * mylight_color * pow( max( dot(reflectdir, eyedir), 0.0 ), s );
     } 
 	//directinal lights
-	else if (mylight_type == 2)
+	else if (mylight_type == 1)
 	{
 		color =  ka + kd * mylight_color * max( dot(-mynormal_matrix*mylight_direction, normal), 0.0) +
 		         ks * mylight_color * pow( max( dot(normalize( reflect(mynormal_matrix*mylight_direction, normal) ), eyedir), 0.0 ), s );
@@ -58,7 +58,7 @@ vec4 computeLight(  const in vec3 eyepos, const in vec3 mypos, const in vec3 lig
 		//			gl_FrontMaterial.specular * mylight_color * pow( max( dot(normalize( reflect(mylight_direction, normal) ), eyedir), 0.0 ), gl_FrontMaterial.shininess );
 	} 
 	//spot-lights
-	else if (mylight_type == 3)
+	else if (mylight_type == 2)
 	{
 	    color =  ka + kd * mylight_color * max( dot(lightdir, normal), 0.0) +
 			     ks * mylight_color * pow( max( dot(reflectdir, eyedir), 0.0 ), s );

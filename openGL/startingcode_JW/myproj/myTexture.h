@@ -5,6 +5,8 @@ class myTexture
 {
 public:
 	int width, height, pixelsize;
+	bool repeat = false;
+	float u = 0.5f, v = 0.5f;
 	GLuint texName;
 
 	myTexture();

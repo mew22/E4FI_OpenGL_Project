@@ -168,6 +168,7 @@ public:
 
 	void computeNormals( )
 	{
+		normals.clear();
 		int i, j;
 		float x1, y1, z1;
 
