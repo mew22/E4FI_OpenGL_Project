@@ -25,6 +25,7 @@ public:
 	vector<GLuint> indices;
 	vector<GLfloat> normals;
 	vector<GLfloat> texturecoordinates;
+	vector<myTexture*> texTmp;
 	vector<GLfloat> tangents;
 	
 
@@ -456,12 +457,49 @@ public:
 								mtlfin >> d; current->material_Ks[2] = d;
 							}
 							else if (v == "map_Kd") {
-								cout << "Creating texture" << endl;
-								mtlfin >> u;
-								myTexture *tex = new myTexture();
-								//tex->strName = u;
-								obj->texture = tex;
-								obj->texture->readTexture((char*)u.c_str());
+								int it = 0;
+								float scaleU = 1, scaleV = 1;
+								do {
+									mtlfin >> u;
+									if (u == "-s") {
+										mtlfin >> u;
+										it++;
+									}
+									if (it == 1) {
+										scaleU = stof(u);
+										mtlfin >> u;
+										it++;
+									}
+									if (it == 2) {
+										scaleV = stof(u);
+										mtlfin >> u;
+										it++;
+									}
+
+								} while (u.find("/") == string::npos);
+
+
+								// To optimise texture loading
+								bool test = false;
+								for (int it = 0; it < texTmp.size(); ++it) {
+									if (texTmp[it]->strName == u) {
+										cout << "Texture exists, I'm going to copy ptr" << endl;
+										test = true;
+										obj->texture = texTmp[it];
+										break;
+									}
+								}
+								if (!test) {
+									cout << "Creating texture" << endl;
+									myTexture *tex = new myTexture();
+									tex->strName = u;
+									tex->scaleU = scaleU;
+									tex->scaleU = scaleV;
+									obj->texture = tex;
+									texTmp.push_back(tex);
+									obj->texture->readTexture((char*)u.c_str());
+								}
+								
 							}
 							else if (v == "newmtl") break;
 						}
@@ -554,10 +592,13 @@ public:
 		parts[i]->material = current;
 
 		if (tonormalize) normalize(vertices);
-		normals = std::vector<GLfloat>(tmp_normals);    // Read normal from file
-		//computeNormals();							      // Compute normal with indice
-		texturecoordinates = std::vector<GLfloat>(tmp_textures);
 
+		// Read normal from file
+		normals = std::vector<GLfloat>(tmp_normals);   
+		// Compute normal with indice
+		//computeNormals();							      
+		texturecoordinates = std::vector<GLfloat>(tmp_textures);
+		texTmp.clear();
 		cout << "End of read scene" << endl;
 	}
 
@@ -618,6 +659,8 @@ public:
 
 			if (parts[i]->texture != nullptr) {
 				glUniform1i(glGetUniformLocation(myshaderprogram, "using_textures"), 1);
+				glUniform1f(glGetUniformLocation(myshaderprogram, "scaleU"), parts[i]->texture->scaleU);
+				glUniform1f(glGetUniformLocation(myshaderprogram, "scaleV"), parts[i]->texture->scaleV);
 
 				// Activate and bind texture
 				parts[i]->texture->activateTexture(GL_TEXTURE8, GL_TEXTURE_2D);

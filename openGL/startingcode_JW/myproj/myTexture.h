@@ -1,13 +1,16 @@
 #pragma once
 #include <GL/glew.h>
+#include <string>
 
 class myTexture
 {
 public:
 	int width, height, pixelsize;
 	bool repeat = false;
-	float u = 0.5f, v = 0.5f;
+	float scaleU = 1, scaleV = 1;
 	GLuint texName;
+	std::string strName;
+
 
 	myTexture();
 	GLubyte * readFile(char *filename, int &, int &);

@@ -24,11 +24,13 @@ uniform int light_type[16];
 uniform int nbLights;
 
 // Avant, pour afficher une lumière
-vec4 mylight_position = vec4(0,2,2,1);
+vec4 mylight_position = vec4(0.5,2,2,1);
 vec4 mylight_color = vec4(1,1,1,0); 
 
 uniform sampler2D tex;
 uniform int using_textures;
+uniform float scaleU;
+uniform float scaleV;
 
 
 vec4 computeLight(  const in vec3 eyepos, const in vec3 mypos, const in vec3 lightpos, const in vec3 mylight_direction, const in int mylight_type,
@@ -107,6 +109,8 @@ void main (void)
 
 	// Textured
 	if(using_textures == 1){
+		// Use line above to enable map_kd -s x x path
+		vec2 tmp = mytextcoord * vec2(scaleU, scaleV);
 		kd = texture(tex, mytextcoord.st);
 	}
 
