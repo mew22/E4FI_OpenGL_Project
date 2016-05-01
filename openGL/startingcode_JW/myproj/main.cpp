@@ -33,6 +33,7 @@ int Glut_w = 600, Glut_h = 400;
 myPoint3D camera_eye(0,3,-1);
 myVector3D camera_up(0,1,0);
 myVector3D camera_forward (0,0,1);
+myVector3D camera_side(1, 0, 0);
 
 float fovy = 90;
 float zNear = 0.2;
@@ -127,7 +128,7 @@ void keyboard(unsigned char key, int x, int y) {
 	case 27:  // Escape to quit
 		exit(0) ;
         break ;
-	case 's':
+	case 'f':
 		renderStyle = (renderStyle+1)%2;
 		glUniform1i(renderStyle_loc, renderStyle) ; 
 		break;
@@ -135,6 +136,24 @@ void keyboard(unsigned char key, int x, int y) {
 		camera_eye = myPoint3D(0,0,2);
 		camera_up = myVector3D(0,1,0);
 		camera_forward = myVector3D(0,0,-1);
+		break;
+	case  'z': 
+		camera_eye.X -= 0.1 * sin(180 * PI / 180.0);
+		camera_eye.Z -= 0.1 * cos(180 * PI / 180.0);
+		obj4->translate(-0.1 * sin(180 * PI / 180.0), 0, -0.1 * cos(180 * PI / 180.0));
+		break;
+	case  's':
+		camera_eye.X += 0.1 * sin(180 * PI / 180.0);
+		camera_eye.Z += 0.1 * cos(180 * PI / 180.0);
+		obj4->translate(0.1 * sin(180 * PI / 180.0), 0, 0.1 * cos(180 * PI / 180.0));
+		break;
+	case  'q':
+		camera_eye += myVector3D(0.1, 0, 0);
+		obj4->translate(0.1, 0, 0);
+		break;
+	case  'd':
+		camera_eye += myVector3D(-0.1, 0, 0);
+		obj4->translate(-0.1, 0, 0);
 		break;
 	}
 	glutPostRedisplay();
@@ -145,29 +164,25 @@ void keyboard2(int key, int x, int y) {
 	switch(key) {
 	case GLUT_KEY_UP:
 		//camera_eye += camera_forward*0.1;
-		camera_eye.X -= 0.1 * sin(180 * PI / 180.0);
-		camera_eye.Z -= 0.1 * cos(180 * PI / 180.0);
-		obj4->translate(-0.1 * sin(180 * PI / 180.0), 0, -0.1 * cos(180 * PI / 180.0));
+		camera_side.normalize();
+		camera_forward.rotate(camera_side, 0.1);
+		camera_forward.normalize();
 		break;
 	case GLUT_KEY_DOWN:
 		//camera_eye += -camera_forward*0.1;
-		camera_eye.X += 0.1 * sin(180 * PI / 180.0);
-		camera_eye.Z += 0.1 * cos(180 * PI / 180.0);
-		obj4->translate(0.1 * sin(180 * PI / 180.0), 0, 0.1 * cos(180 * PI / 180.0));
+		camera_side.normalize();
+		camera_forward.rotate(camera_side, -0.1);
+		camera_forward.normalize();
 		break;
 	case GLUT_KEY_LEFT:
-		//camera_up.normalize();
-		//camera_forward.rotate(camera_up, 0.1);
-		//camera_forward.normalize();
-		camera_eye += myVector3D(0.1,0,0);
-		obj4->translate(0.1, 0, 0);
+		camera_up.normalize();
+		camera_forward.rotate(camera_up, 0.1);
+		camera_forward.normalize();
 		break;
 	case GLUT_KEY_RIGHT:
-		//camera_up.normalize();
-		//camera_forward.rotate(camera_up, -0.1);
-		//camera_forward.normalize();
-		camera_eye += myVector3D(-0.1, 0, 0);
-		obj4->translate(-0.1, 0, 0);
+		camera_up.normalize();
+		camera_forward.rotate(camera_up, -0.1);
+		camera_forward.normalize();
 		break;
 	}
 	glutPostRedisplay();
