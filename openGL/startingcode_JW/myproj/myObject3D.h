@@ -253,6 +253,7 @@ public:
 		model_matrix = tmp * model_matrix;
 	}
 
+
 	void normalize(vector<GLfloat> & myvertices)
 	{
 		if (myvertices.size() < 4) return;
@@ -476,21 +477,21 @@ public:
 										it++;
 									}
 
-								} while (u.find("/") == string::npos);
+								} while (u.find(".ppm") == string::npos);
 
 
 								// To optimise texture loading
 								bool test = false;
 								for (int it = 0; it < texTmp.size(); ++it) {
 									if (texTmp[it]->strName == u) {
-										cout << "Texture exists, I'm going to copy ptr" << endl;
+										cout << "Texture exists, I'm going to copy ptr of " << u << endl;
 										test = true;
 										obj->texture = texTmp[it];
 										break;
 									}
 								}
 								if (!test) {
-									cout << "Creating texture" << endl;
+									cout << "Creating texture from " << u << endl;
 									myTexture *tex = new myTexture();
 									tex->strName = u;
 									tex->scaleU = scaleU;

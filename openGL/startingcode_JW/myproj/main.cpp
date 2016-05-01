@@ -22,6 +22,7 @@ using namespace std;
 #include "vector3d.h"
 #include "myObject3D.h"
 #include "myLight.h"
+#include <math.h>
 
 
 
@@ -29,9 +30,9 @@ using namespace std;
 int Glut_w = 600, Glut_h = 400; 
 
 //Variables and their values for the camera setup.
-myPoint3D camera_eye(0,0,4);
+myPoint3D camera_eye(0,3,-1);
 myVector3D camera_up(0,1,0);
-myVector3D camera_forward (0,0,-1);
+myVector3D camera_forward (0,0,1);
 
 float fovy = 90;
 float zNear = 0.2;
@@ -55,7 +56,7 @@ vector<GLuint> indices;
 myObject3D *obj1;
 myObject3D *obj2;
 myObject3D *obj3;
-
+myObject3D *obj4;
 
 myLight *lights;
 int nbLight;
@@ -143,20 +144,30 @@ void keyboard(unsigned char key, int x, int y) {
 void keyboard2(int key, int x, int y) {
 	switch(key) {
 	case GLUT_KEY_UP:
-		camera_eye += camera_forward*1.1;
+		//camera_eye += camera_forward*0.1;
+		camera_eye.X -= 0.1 * sin(180 * PI / 180.0);
+		camera_eye.Z -= 0.1 * cos(180 * PI / 180.0);
+		obj4->translate(-0.1 * sin(180 * PI / 180.0), 0, -0.1 * cos(180 * PI / 180.0));
 		break;
 	case GLUT_KEY_DOWN:
-		camera_eye += -camera_forward*1.1;
+		//camera_eye += -camera_forward*0.1;
+		camera_eye.X += 0.1 * sin(180 * PI / 180.0);
+		camera_eye.Z += 0.1 * cos(180 * PI / 180.0);
+		obj4->translate(0.1 * sin(180 * PI / 180.0), 0, 0.1 * cos(180 * PI / 180.0));
 		break;
 	case GLUT_KEY_LEFT:
-		camera_up.normalize();
-		camera_forward.rotate(camera_up, 0.1);
-		camera_forward.normalize();
+		//camera_up.normalize();
+		//camera_forward.rotate(camera_up, 0.1);
+		//camera_forward.normalize();
+		camera_eye += myVector3D(0.1,0,0);
+		obj4->translate(0.1, 0, 0);
 		break;
 	case GLUT_KEY_RIGHT:
-		camera_up.normalize();
-		camera_forward.rotate(camera_up, -0.1);
-		camera_forward.normalize();
+		//camera_up.normalize();
+		//camera_forward.rotate(camera_up, -0.1);
+		//camera_forward.normalize();
+		camera_eye += myVector3D(-0.1, 0, 0);
+		obj4->translate(-0.1, 0, 0);
 		break;
 	}
 	glutPostRedisplay();
@@ -204,7 +215,7 @@ void display()
 	//obj1->displayObject(shaderprogram1,view_matrix);
 	//obj2->displayObject(shaderprogram1,view_matrix);
 	obj3->displayScene(view_matrix);
-
+	obj4->displayScene(view_matrix);
 
 	glFlush();
 }
@@ -251,28 +262,38 @@ void init()
 	obj3->createObjectBuffers();
 
 
+	// Personnage iron man
+	obj4 = new myObject3D(shaderprogram1);
+	obj4->readScene("IronMan2.obj");
+	if (obj4->normals.size() == 0)
+		obj4->computeNormals();
+	obj4->createObjectBuffers();
+	obj4->scale(0.008, 0.008, 0.008);
+	obj4->translate(0, 1, -1);
+	//obj4->rotate(0,1,0,180);
 
 	// 3.5
 	nbLight = 1;
+	int l1 = 0, l2 = 0, l3 = 2;
 
 	lights = (myLight*)malloc(nbLight*sizeof(myLight));
 
-	lights[0].color[0] = 1; lights[0].color[1] = 1; lights[0].color[2] = 1; lights[0].color[3] = 1; 
-	lights[0].position[0] = 0; lights[0].position[1] = 4; lights[0].position[2] = 0; lights[0].position[3] = 0;
-	lights[0].direction[0] = 0; lights[0].direction[1] = -1; lights[0].direction[2] = 0; lights[0].direction[3] = 0;
-	lights[0].type = 0; // point light
+	lights[l1].color[0] = 1; lights[l1].color[1] = 1; lights[l1].color[2] = 1; lights[l1].color[3] = 1;
+	lights[l1].position[0] = 0; lights[l1].position[1] = 4; lights[l1].position[2] = 0; lights[l1].position[3] = 0;
+	lights[l1].direction[0] = 0; lights[l1].direction[1] = -3; lights[l1].direction[2] = 0; lights[l1].direction[3] = 0;
+	lights[l1].type = 0; // point light
+	/*
+	lights[l2].color[0] = 1; lights[l2].color[1] = 1; lights[l2].color[2] = 1; lights[l2].color[3] = 1;
+	lights[l2].position[0] = 8; lights[l2].position[1] = 20; lights[l2].position[2] = -10; lights[l2].position[3] = 0;
+	lights[l2].direction[0] = 0; lights[l2].direction[1] = -1; lights[l2].direction[2] = 0; lights[l2].direction[3] = 0;
+	lights[l2].type = 1; // direction light
+	
 
-	/*lights[1].color[0] = 1; lights[1].color[1] = 1; lights[1].color[2] = 1; lights[1].color[3] = 1; 
-	lights[1].position[0] = 8; lights[1].position[1] = 4; lights[1].position[2] = -10; lights[1].position[3] = 0;
-	lights[1].direction[0] = 0; lights[1].direction[1] = 2; lights[1].direction[2] = 0; lights[1].direction[3] = 0; 
-	lights[1].type = 1; // direction light
+	lights[l3].color[0] = 1; lights[l3].color[1] = 1; lights[l3].color[2] = 1; lights[l3].color[3] = 0; 
+	lights[l3].position[0] = -1; lights[l3].position[1] = 2; lights[l3].position[2] = 0; lights[l3].position[3] = 0; 
+	lights[l3].direction[0] = 0; lights[l3].direction[1] = 2; lights[l3].direction[2] = 0; lights[l3].direction[3] = 0; 
+	lights[l3].type = 2; // spotlight
 	*/
-
-	//lights[2].color[0] = 1; lights[2].color[1] = 1; lights[2].color[2] = 1; lights[2].color[3] = 0; 
-	//lights[2].position[0] = -1; lights[2].position[1] = 2; lights[2].position[2] = 0; lights[2].position[3] = 0; 
-	//lights[2].direction[0] = 0; lights[2].direction[1] = 2; lights[2].direction[2] = 0; lights[2].direction[3] = 0; 
-	//lights[2].type = 2; // spotlight
-
 	glUniform1i(glGetUniformLocation(shaderprogram1, "nbLights"), nbLight);
 
 	// 3.5

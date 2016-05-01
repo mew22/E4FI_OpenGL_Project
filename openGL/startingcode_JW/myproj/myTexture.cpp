@@ -17,7 +17,7 @@ GLubyte * myTexture::readFile(char *filename, int & w, int & h)
 	int maxVal;
 
 	if( (inFile = fopen(filename, "rb")) == NULL) {
-		std::cout << "Unable to open the ppm file";
+		std::cout << "Unable to open the ppm file: " << filename;
 		getchar();
 		exit(1);
 	}

@@ -24,8 +24,8 @@ uniform int light_type[16];
 uniform int nbLights;
 
 // Avant, pour afficher une lumière
-vec4 mylight_position = vec4(0.5,2,2,1);
-vec4 mylight_color = vec4(1,1,1,0); 
+//vec4 mylight_position = vec4(0.5,2,2,1);
+//vec4 mylight_color = vec4(1,1,1,0); 
 
 uniform sampler2D tex;
 uniform int using_textures;
@@ -33,7 +33,7 @@ uniform float scaleU;
 uniform float scaleV;
 
 
-vec4 computeLight(  const in vec3 eyepos, const in vec3 mypos, const in vec3 lightpos, const in vec3 mylight_direction, const in int mylight_type,
+vec4 computeLight(  const in vec3 eyepos, const in vec3 mypos, const in vec3 lightpos, const in vec3 mylight_direction, const in vec4 mylight_color, const in int mylight_type,
 					in vec3 normal, const in vec4 ka, const in vec4 kd, 
 					const in vec4 ks, const in float s )
 {
@@ -118,7 +118,7 @@ void main (void)
 	for (int i = 0; i<nbLights; i++){
 		vec3 lightpos = light_position[i].xyz ;
 		vec3 lightdir = light_direction[i].xyz;
-		gl_FragColor += computeLight(eyepos, mypos, lightpos, lightdir, light_type[i],normal, mymodel_ka, kd, mymodel_ks, mymodel_ns);
+		gl_FragColor += computeLight(eyepos, mypos, lightpos, lightdir, light_colors[i], light_type[i],normal, mymodel_ka, kd, mymodel_ks, mymodel_ns);
 	}
 
 }
