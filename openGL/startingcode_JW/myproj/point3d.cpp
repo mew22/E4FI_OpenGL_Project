@@ -17,6 +17,11 @@ myPoint3D myPoint3D::operator+(myVector3D & v1)
 	return myPoint3D(X+v1.dX, Y+v1.dY, Z+v1.dZ);
 }
 
+myPoint3D myPoint3D::operator*(myVector3D & v1)
+{
+	return myPoint3D(X * v1.dX, Y * v1.dY, Z * v1.dZ);
+}
+
 myPoint3D & myPoint3D::operator+=(myVector3D & v1)
 {
 	X += v1.dX;

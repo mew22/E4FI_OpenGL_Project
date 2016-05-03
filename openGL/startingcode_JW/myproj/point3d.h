@@ -17,6 +17,7 @@ public:
   myPoint3D(double x, double y, double z);
   double dist(myPoint3D p1);
   myPoint3D operator+(myVector3D & v1);
+  myPoint3D operator*(myVector3D & v1);
   myPoint3D & operator+=(myVector3D & v1);
   void rotate(myVector3D & lp, double theta);
   void print(char *s);

@@ -24,8 +24,6 @@ using namespace std;
 #include "myLight.h"
 #include <math.h>
 
-
-
 // width and height of the window.
 int Glut_w = 600, Glut_h = 400; 
 
@@ -34,6 +32,7 @@ myPoint3D camera_eye(0,3,-1);
 myVector3D camera_up(0,1,0);
 myVector3D camera_forward (0,0,1);
 myVector3D camera_side(1, 0, 0);
+
 
 float fovy = 90;
 float zNear = 0.2;
@@ -44,7 +43,8 @@ int GLUTmouse[2] = { 0, 0 };
 
 GLuint vertexshader, fragmentshader, shaderprogram1; // shaders
 
-GLuint renderStyle = 0;			GLuint renderStyle_loc;
+GLuint renderStyle = 0;			
+GLuint renderStyle_loc;
 GLuint projection_matrix_loc;
 GLuint view_matrix_loc;
 GLuint normal_matrix_loc;
@@ -61,6 +61,14 @@ myObject3D *obj4;
 
 myLight *lights;
 int nbLight;
+bool souris = false;
+
+myVector3D camera_right;
+myVector3D camera_target;
+float sensitivity = 0.2;
+float speedX = 0.1, speedY = 0, speedZ = 0.1;
+float teta = 180, phi = 0;
+float r_temp = 1;
 
 
 //This function is called when a mouse button is pressed.
@@ -78,7 +86,7 @@ void mouse(int button, int state, int x, int y)
 void mousedrag(int x, int y)
 {
   // Invert y coordinate
-  y = Glut_h - y;
+  //y = Glut_h - y;
 
   //change in the mouse position since last time
   int dx = x - GLUTmouse[0];
@@ -87,17 +95,43 @@ void mousedrag(int x, int y)
   GLUTmouse[0] = x;
   GLUTmouse[1] = y;
 
+  teta -= dx * sensitivity; phi -= dy * sensitivity;
+  if (phi > 89)
+	  phi = 89;
+  else if (phi < -89)
+	  phi = -89;
+
   if (dx == 0 && dy == 0) return;
-  if (button_pressed == 0) return;
+  /*if (button_pressed == 0) return;*/
+
+  //float rayon = sqrt(pow(dx, 2) + pow(dy, 2));
+  r_temp = cos(phi * PI / 180);
+  camera_forward.dX = sin(teta * PI / 180.0) * r_temp;
+  camera_forward.dY = sin(phi * PI / 180.0);
+  camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
+
+  if (obj4 != nullptr) {
+	  obj4->model_matrix = glm::mat4(1.0f);
+	  obj4->rotate(0,1,0,teta);
+	  obj4->model_matrix *= r_temp;
+	  
+	  obj4->scale(0.008, 0.008, 0.008);
+	  obj4->translate(0, 1, -1);  
+  }
+ 
 
   double vx = (double) dx / (double) Glut_w;
   double vy = (double) dy / (double) Glut_h;
-  double theta = 4.0 * (fabs(vx) + fabs(vy));
+  //double theta = 4.0 * (fabs(vx) + fabs(vy));
 
-  myVector3D camera_right = camera_forward.crossproduct(camera_up);
+  camera_right = camera_forward.crossproduct(camera_up);
   camera_right.normalize();
 
-  myVector3D tomovein_direction = -camera_right*vx + -camera_up*vy;
+  camera_target.dX = camera_eye.X + camera_forward.dX;
+  camera_target.dY = camera_eye.Y + camera_forward.dY;
+  camera_target.dZ = camera_eye.Z + camera_forward.dZ;
+
+  /*myVector3D tomovein_direction = -camera_right*vx + -camera_up*vy;
 
   myVector3D rotation_axis = tomovein_direction.crossproduct(camera_forward);
   rotation_axis.normalize();
@@ -108,7 +142,7 @@ void mousedrag(int x, int y)
   camera_eye.rotate(rotation_axis, theta);
  
   camera_up.normalize();
-  camera_forward.normalize();
+  camera_forward.normalize();*/
 
   glutPostRedisplay();
 }
@@ -138,53 +172,123 @@ void keyboard(unsigned char key, int x, int y) {
 		camera_forward = myVector3D(0,0,-1);
 		break;
 	case  'z': 
-		camera_eye.X -= 0.1 * sin(180 * PI / 180.0);
-		camera_eye.Z -= 0.1 * cos(180 * PI / 180.0);
-		obj4->translate(-0.1 * sin(180 * PI / 180.0), 0, -0.1 * cos(180 * PI / 180.0));
+		camera_eye.X += speedX * camera_forward.dX;
+		camera_eye.Z += speedZ * camera_forward.dZ;
+
+		obj4->translate(speedX * camera_forward.dX, 0, speedZ * camera_forward.dZ);
 		break;
 	case  's':
-		camera_eye.X += 0.1 * sin(180 * PI / 180.0);
-		camera_eye.Z += 0.1 * cos(180 * PI / 180.0);
-		obj4->translate(0.1 * sin(180 * PI / 180.0), 0, 0.1 * cos(180 * PI / 180.0));
+		camera_eye.X -= speedX * camera_forward.dX;
+		camera_eye.Z -= speedZ * camera_forward.dZ;
+
+		obj4->translate(-speedX * camera_forward.dX, 0, -speedZ * camera_forward.dZ);
 		break;
 	case  'q':
-		camera_eye += myVector3D(0.1, 0, 0);
-		obj4->translate(0.1, 0, 0);
+		//camera_eye.X -= speedX * cos(teta * PI / 180.0);
+		//camera_eye.Z += speedZ * sin(teta * PI / 180.0);
+
+		camera_eye.X -= speedX * camera_right.dX;
+		camera_eye.Z -= speedZ * camera_right.dZ;
+
+		obj4->translate(-speedX * camera_right.dX, 0, -speedZ * camera_right.dZ);
 		break;
 	case  'd':
-		camera_eye += myVector3D(-0.1, 0, 0);
-		obj4->translate(-0.1, 0, 0);
+		//camera_eye.X += speedX * cos(teta * PI / 180.0);
+		//camera_eye.Z -= speedZ * sin(teta * PI / 180.0);
+
+		camera_eye.X += speedX * camera_right.dX;
+		camera_eye.Z += speedZ * camera_right.dZ;
+
+		obj4->translate(speedX * camera_right.dX, 0, speedZ * camera_right.dZ);
 		break;
 	}
+	camera_target.dX = camera_eye.X + camera_forward.dX;
+	camera_target.dY = camera_eye.Y + camera_forward.dY;
+	camera_target.dZ = camera_eye.Z + camera_forward.dZ;
 	glutPostRedisplay();
 }
 
 //This function is called when an arrow key is pressed.
 void keyboard2(int key, int x, int y) {
+	//perso_cam.deplacer(souris, GLUTmouse[0], GLUTmouse[1], key);
 	switch(key) {
 	case GLUT_KEY_UP:
 		//camera_eye += camera_forward*0.1;
-		camera_side.normalize();
+		/*camera_side.normalize();
 		camera_forward.rotate(camera_side, 0.1);
-		camera_forward.normalize();
+		camera_forward.normalize();*/
+
+		phi += 5;
+		if (phi > 89)
+			phi = 89;
+		else if (phi < -89)
+			phi = -89;
+		camera_forward.dY = sin(phi * PI / 180.0);
+
 		break;
 	case GLUT_KEY_DOWN:
 		//camera_eye += -camera_forward*0.1;
-		camera_side.normalize();
+		/*camera_side.normalize();
 		camera_forward.rotate(camera_side, -0.1);
-		camera_forward.normalize();
+		camera_forward.normalize();*/
+
+		phi -= 5;
+		if (phi > 89)
+			phi = 89;
+		else if (phi < -89)
+			phi = -89;
+		camera_forward.dY = sin(phi * PI / 180.0);
+		
+
 		break;
 	case GLUT_KEY_LEFT:
-		camera_up.normalize();
+		/*camera_up.normalize();
 		camera_forward.rotate(camera_up, 0.1);
-		camera_forward.normalize();
+		//obj4->rotate(0, 1, 0, 0.1 * 180 / PI);
+		camera_forward.normalize();*/
+
+		r_temp = cos(phi * PI / 180);
+		teta += 5;
+		camera_forward.dX = sin(teta * PI / 180.0) * r_temp;
+		camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
+
+		if (obj4 != nullptr) {
+			obj4->model_matrix = glm::mat4(1.0f);
+			obj4->rotate(0, 1, 0, teta);
+			obj4->model_matrix *= r_temp;
+
+			obj4->scale(0.008, 0.008, 0.008);
+			obj4->translate(0, 1, -1);
+		}
 		break;
+
 	case GLUT_KEY_RIGHT:
-		camera_up.normalize();
+		/*camera_up.normalize();
 		camera_forward.rotate(camera_up, -0.1);
-		camera_forward.normalize();
+		//obj4->rotate(0, 1, 0, -0.1 * 180 / PI);
+		camera_forward.normalize();*/
+
+		r_temp = cos(phi * PI / 180);
+		teta -= 5;
+		camera_forward.dX = sin(teta * PI / 180.0) * r_temp;
+		camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
+
+		if (obj4 != nullptr) {
+			obj4->model_matrix = glm::mat4(1.0f);
+			obj4->rotate(0, 1, 0, teta);
+			obj4->model_matrix *= r_temp;
+
+			obj4->scale(0.008, 0.008, 0.008);
+			obj4->translate(0, 1, -1);
+		}
 		break;
 	}
+	camera_right = camera_forward.crossproduct(camera_up);
+	camera_right.normalize();
+
+	camera_target.dX = camera_eye.X + camera_forward.dX;
+	camera_target.dY = camera_eye.Y + camera_forward.dY;
+	camera_target.dZ = camera_eye.Z + camera_forward.dZ;
 	glutPostRedisplay();
 }
 
@@ -208,7 +312,7 @@ void display()
 
 	glm::mat4 view_matrix = 
 		glm::lookAt(glm::vec3(camera_eye.X, camera_eye.Y, camera_eye.Z), 
-					glm::vec3(camera_eye.X + camera_forward.dX, camera_eye.Y + camera_forward.dY, camera_eye.Z + camera_forward.dZ), 
+					glm::vec3(camera_target.dX, camera_target.dY, camera_target.dZ),
 					glm::vec3(camera_up.dX, camera_up.dY, camera_up.dZ));
 	glUniformMatrix4fv(view_matrix_loc, 1, GL_FALSE, &view_matrix[0][0]);
 
@@ -238,6 +342,13 @@ void display()
 //This function is called from the main to initalize everything.
 void init()
 {
+	camera_right = camera_forward.crossproduct(camera_up);
+	camera_right.normalize();
+
+	camera_target.dX = camera_eye.X + camera_forward.dX;
+	camera_target.dY = camera_eye.Y + camera_forward.dY;
+	camera_target.dZ = camera_eye.Z + camera_forward.dZ;
+
     vertexshader = initshaders(GL_VERTEX_SHADER, "shaders/light.vert.glsl") ;
     fragmentshader = initshaders(GL_FRAGMENT_SHADER, "shaders/light.frag.glsl") ;
     shaderprogram1 = initprogram(vertexshader, fragmentshader);
@@ -271,7 +382,7 @@ void init()
 	obj3 = new myObject3D(shaderprogram1);
 	//obj3->readScene("test.obj");
 	//obj3->readScene("TheCarnival.obj");
-	obj3->readScene("portal2.obj");
+	obj3->readScene("portal5.obj");
 	if (obj3->normals.size() == 0)
 		obj3->computeNormals();
 	obj3->createObjectBuffers();
@@ -279,7 +390,7 @@ void init()
 
 	// Personnage iron man
 	obj4 = new myObject3D(shaderprogram1);
-	obj4->readScene("IronMan2.obj");
+	obj4->readScene("IronManHand.obj");
 	if (obj4->normals.size() == 0)
 		obj4->computeNormals();
 	obj4->createObjectBuffers();
@@ -353,7 +464,7 @@ int main(int argc, char* argv[]) {
 	glutDisplayFunc(display);
 	glutKeyboardFunc(keyboard);
 	glutSpecialFunc(keyboard2);
-	glutMotionFunc(mousedrag) ;
+	glutPassiveMotionFunc(mousedrag) ;
 	glutMouseFunc(mouse) ;
 	glutMouseWheelFunc(mouseWheel);
 
