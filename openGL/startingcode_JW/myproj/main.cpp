@@ -59,6 +59,8 @@ myObject3D *obj2;
 myObject3D *obj3;
 myObject3D *obj4;
 
+float arm_angle = 0;
+
 myLight *lights;
 int nbLight;
 bool souris = false;
@@ -111,12 +113,11 @@ void mousedrag(int x, int y)
   camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
 
   if (obj4 != nullptr) {
-	  obj4->model_matrix = glm::mat4(1.0f);
-	  obj4->rotate(0,1,0,teta);
-	  obj4->model_matrix *= r_temp;
-	  
-	  obj4->scale(0.008, 0.008, 0.008);
-	  obj4->translate(0, 1, -1);  
+	  obj4->translate(-camera_eye.X, 0, -camera_eye.Z);
+	  obj4->rotate(0, 1, 0, -arm_angle);
+	  obj4->rotate(0, 1, 0, teta);
+	  obj4->translate(camera_eye.X, 0, camera_eye.Z);
+	  arm_angle = teta;
   }
  
 
@@ -253,12 +254,11 @@ void keyboard2(int key, int x, int y) {
 		camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
 
 		if (obj4 != nullptr) {
-			obj4->model_matrix = glm::mat4(1.0f);
+			obj4->translate(-camera_eye.X, 0, -camera_eye.Z);
+			obj4->rotate(0, 1, 0, -arm_angle);
 			obj4->rotate(0, 1, 0, teta);
-			obj4->model_matrix *= r_temp;
-
-			obj4->scale(0.008, 0.008, 0.008);
-			obj4->translate(0, 1, -1);
+			obj4->translate(camera_eye.X, 0, camera_eye.Z);
+			arm_angle = teta;
 		}
 		break;
 
@@ -274,12 +274,11 @@ void keyboard2(int key, int x, int y) {
 		camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
 
 		if (obj4 != nullptr) {
-			obj4->model_matrix = glm::mat4(1.0f);
+			obj4->translate(-camera_eye.X, 0, -camera_eye.Z);
+			obj4->rotate(0, 1, 0, -arm_angle);
 			obj4->rotate(0, 1, 0, teta);
-			obj4->model_matrix *= r_temp;
-
-			obj4->scale(0.008, 0.008, 0.008);
-			obj4->translate(0, 1, -1);
+			obj4->translate(camera_eye.X, 0, camera_eye.Z);
+			arm_angle = teta;
 		}
 		break;
 	}
@@ -395,7 +394,7 @@ void init()
 		obj4->computeNormals();
 	obj4->createObjectBuffers();
 	obj4->scale(0.008, 0.008, 0.008);
-	obj4->translate(0, 1, -1);
+	obj4->translate(camera_eye.X, 1, camera_eye.Z);
 	//obj4->rotate(0,1,0,180);
 
 	// 3.5
