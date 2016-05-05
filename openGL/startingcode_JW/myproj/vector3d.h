@@ -17,6 +17,7 @@ public:
   double operator*(myVector3D & v1);
   myVector3D operator+(myVector3D & v1);
   myVector3D operator-();
+  myVector3D operator/(double v1);
   myVector3D operator*(double s);
   void crossproduct(myVector3D &, myVector3D &);
   myVector3D crossproduct(myVector3D &);

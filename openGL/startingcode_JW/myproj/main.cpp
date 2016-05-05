@@ -24,25 +24,21 @@ using namespace std;
 #include "myLight.h"
 #include <math.h>
 
-// width and height of the window.
+//Variables for window settings
 int Glut_w = 600, Glut_h = 400; 
-
-//Variables and their values for the camera setup.
-myPoint3D camera_eye(0,3,-1);
-myVector3D camera_up(0,1,0);
-myVector3D camera_forward (0,0,1);
-myVector3D camera_side(1, 0, 0);
-
-
 float fovy = 90;
 float zNear = 0.2;
 float zFar = 6000;
 
+//Variables for mouse 
 int button_pressed = 0; // 1 if a button is currently being pressed.
 int GLUTmouse[2] = { 0, 0 };
 
-GLuint vertexshader, fragmentshader, shaderprogram1; // shaders
+//Variable for shader
+GLuint vertexshader, fragmentshader, shaderprogram1;
 
+
+//Variable for shader location
 GLuint renderStyle = 0;			
 GLuint renderStyle_loc;
 GLuint projection_matrix_loc;
@@ -50,27 +46,36 @@ GLuint view_matrix_loc;
 GLuint normal_matrix_loc;
 GLuint buffers[6];
 
-vector<GLfloat> vertices;
-vector<GLfloat> normals;
-vector<GLuint> indices;
-
+//Variables for objects models
 myObject3D *obj1;
 myObject3D *obj2;
 myObject3D *obj3;
 myObject3D *obj4;
 
-float arm_angle = 0;
 
+//Variables for lighting
 myLight *lights;
 int nbLight;
-bool souris = false;
 
+//Variables and their values for the camera setup.
+myPoint3D camera_eye(0, 3, -1);
+myVector3D camera_up(0, 1, 0);
+myVector3D camera_forward(0, 0, 1);
+myVector3D camera_side(1, 0, 0);
 myVector3D camera_right;
 myVector3D camera_target;
 float sensitivity = 0.2;
 float speedX = 0.1, speedY = 0, speedZ = 0.1;
 float teta = 180, phi = 0;
 float r_temp = 1;
+float arm_angle = 0;
+
+//Variables for portal creation
+bool portalActivated[2] = { false, false };
+myObject3D portals[2];
+myVector3D portalsDirection[2];
+int portalsDirectionIteraction[2] = { 0,0 };
+int portalDistance = 10;
 
 
 //This function is called when a mouse button is pressed.
@@ -79,9 +84,28 @@ void mouse(int button, int state, int x, int y)
   // Remember button state 
   button_pressed = (state == GLUT_DOWN) ? 1 : 0;
 
-   // Remember mouse position 
+   /*
   GLUTmouse[0] = x;
   GLUTmouse[1] = Glut_h - y;
+  */
+
+  if (button_pressed == 1 && button == GLUT_LEFT_BUTTON) {
+	  cout << "portal1 created" << endl;
+
+	  portals[0].model_matrix = obj4->model_matrix;
+	  portalsDirection[0] = camera_forward;
+	  portalsDirectionIteraction[0] = portalDistance;
+	  portalActivated[0] = true;
+
+  }
+  if (button_pressed == 1 && button == GLUT_RIGHT_BUTTON) {
+	  cout << "portal2 created" << endl;
+
+	  portals[1].model_matrix = obj4->model_matrix;
+	  portalsDirection[1] = camera_forward;
+	  portalsDirectionIteraction[1] = portalDistance;
+	  portalActivated[1] = true;
+  }
 }
 
 //This function is called when the mouse is dragged.
@@ -319,8 +343,6 @@ void display()
 	glUniformMatrix4fv(normal_matrix_loc, 1, GL_FALSE, &normal_matrix[0][0]);
 
 
-
-
 	
 	// 3.6. Display the light
 	// - point for point light
@@ -334,6 +356,13 @@ void display()
 	//obj2->displayObject(shaderprogram1,view_matrix);
 	obj3->displayScene(view_matrix);
 	obj4->displayScene(view_matrix);
+
+	if (portalActivated[0]) {
+		portals[0].displayScene(view_matrix);
+	}
+	if (portalActivated[1]) {
+		portals[1].displayScene(view_matrix);
+	}
 
 	glFlush();
 }
@@ -362,7 +391,6 @@ void init()
 
 
 
-
 	/*obj1 = new myObject3D();
 	obj1->readMesh("apple.obj");
 	obj1->computeNormals();
@@ -375,8 +403,15 @@ void init()
 	obj2->createObjectBuffers();
 	obj2->translate(4,0,0);*/
 	
+	// Portals
+	portals[0].myshaderprogram = shaderprogram1;
+	portals[0].readScene("portal.obj");
+	portals[0].createObjectBuffers();
 
-	
+	portals[1].myshaderprogram = shaderprogram1;
+	portals[1].readScene("portal.obj");
+	portals[1].createObjectBuffers();
+
 	// Maya Scene
 	obj3 = new myObject3D(shaderprogram1);
 	//obj3->readScene("test.obj");
@@ -389,7 +424,7 @@ void init()
 
 	// Personnage iron man
 	obj4 = new myObject3D(shaderprogram1);
-	obj4->readScene("IronManHand.obj");
+	obj4->readScene("IronMan2.obj");
 	if (obj4->normals.size() == 0)
 		obj4->computeNormals();
 	obj4->createObjectBuffers();
@@ -449,6 +484,19 @@ void init()
 	glClearColor(0.4, 0.4, 0.4, 0);
 
 }
+void animation(void)
+{
+	if (portalsDirectionIteraction[0] != 0) {
+		portals[0].translate(portalsDirection[0].dX, portalsDirection[0].dY, portalsDirection[0].dZ);
+		portalsDirectionIteraction[0]--;
+	}
+	if (portalsDirectionIteraction[1] != 0) {
+		portals[1].translate(portalsDirection[1].dX, portalsDirection[1].dY, portalsDirection[1].dZ);
+		portalsDirectionIteraction[1]--;
+	}
+
+	glutPostRedisplay();
+}
 
 
 int main(int argc, char* argv[]) {
@@ -466,6 +514,7 @@ int main(int argc, char* argv[]) {
 	glutPassiveMotionFunc(mousedrag) ;
 	glutMouseFunc(mouse) ;
 	glutMouseWheelFunc(mouseWheel);
+	glutIdleFunc(animation);
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS) ;

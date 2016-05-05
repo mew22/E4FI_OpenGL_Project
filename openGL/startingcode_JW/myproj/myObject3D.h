@@ -42,6 +42,11 @@ public:
 		material = (myMaterial*)malloc(sizeof(myMaterial));
 
 	}
+	myObject3D() {
+		clear();
+		model_matrix = glm::mat4(1.0f);
+		material = (myMaterial*)malloc(sizeof(myMaterial));
+	}
 
 	void clear() {
 		vertices.clear();

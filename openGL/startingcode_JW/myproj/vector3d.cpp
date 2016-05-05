@@ -22,6 +22,11 @@ myVector3D myVector3D::operator+(myVector3D & v1)
 	return myVector3D(dX+v1.dX, dY+v1.dY, dZ+v1.dZ);
 }
 
+myVector3D myVector3D::operator/(double v1)
+{
+	return myVector3D(dX/v1, dY/v1, dZ/v1);
+}
+
 myVector3D myVector3D::operator-()
 {
 	return myVector3D(-dX, -dY, -dZ);
