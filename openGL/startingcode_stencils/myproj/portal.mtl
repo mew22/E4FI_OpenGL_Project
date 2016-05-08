@@ -1,0 +1,86 @@
+newmtl Default_Material
+d 1
+Ns 1
+Ni 0
+Ka 0 0 0
+Kd 0 0 0
+Ks 0 0 0
+Km 0
+
+newmtl Stone_Brushed_Khaki
+d 1
+Ns 1
+Ni 0
+Ka 0 0 0
+Kd 0.886275 0.768627 0.521569
+Ks 0 0 0
+Km 0
+map_Kd ./maps/portal/Stone_Brushed_Khaki.ppm
+
+newmtl Water_Pool_Light1
+d 0.6
+Ns 1
+Ni 0
+Ka 0 0 0
+Kd 0.247059 0.584314 0.654902
+Ks 0 0 0
+Km 0
+map_Kd ./maps/portal/Water_Pool_Light1.ppm
+
+newmtl Stone_Marble
+d 1
+Ns 1
+Ni 0
+Ka 0 0 0
+Kd 0.556863 0.537255 0.529412
+Ks 0 0 0
+Km 0
+map_Kd ./maps/portal/Stone_Marble.ppm
+
+newmtl Metal_Aluminum_Anodized
+d 1
+Ns 1
+Ni 0
+Ka 0 0 0
+Kd 0.792157 0.819608 0.858824
+Ks 0 0 0
+Km 0
+map_Kd ./maps/portal/Metal_Aluminum_Anodized.ppm
+
+newmtl Color_D01
+d 1
+Ns 1
+Ni 0
+Ka 0 0 0
+Kd 1 0.74902 0
+Ks 0 0 0
+Km 0
+
+newmtl Color_A01
+d 1
+Ns 1
+Ni 0
+Ka 0 0 0
+Kd 1 0 0
+Ks 0 0 0
+Km 0
+
+newmtl Stone_Brushed_Khaki1
+d 1
+Ns 1
+Ni 0
+Ka 0 0 0
+Kd 0.886275 0.768627 0.521569
+Ks 0 0 0
+Km 0
+map_Kd ./maps/portal/Stone_Brushed_Khaki1.ppm
+
+newmtl defaultMat
+d 1
+Ns 1
+Ni 0
+Ka 0 0 0
+Kd 0.529412 0.760784 0.92549
+Ks 0.6 0.6 0.6
+Km 0
+

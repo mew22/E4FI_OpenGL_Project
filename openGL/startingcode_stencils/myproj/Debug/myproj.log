@@ -1,0 +1,76 @@
+﻿La génération a démarré 04/05/2016 19:12:00.
+     1>Projet "E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_JW\myproj\myproj.vcxproj" sur le nœud 2 (Build cible(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Debug\myproj.pch" /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(81): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(82): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(83): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(133): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(134): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(135): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(137): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(138): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(139): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(165): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(166): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(167): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(230): warning C4018: '<' : incompatibilité signed/unsigned
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(235): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(284): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(285): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(286): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(288): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(289): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(290): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(320): warning C4101: 'k' : variable locale non référencée
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(382): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(386): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(390): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(407): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(408): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(409): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(421): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(422): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(485): warning C4018: '<' : incompatibilité signed/unsigned
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(587): warning C4018: '<' : incompatibilité signed/unsigned
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(653): warning C4018: '<' : incompatibilité signed/unsigned
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(694): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(695): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(706): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(711): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(725): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(726): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(738): warning C4018: '<' : incompatibilité signed/unsigned
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(756): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(757): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(790): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(793): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\myobject3d.h(801): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\mylight.h(31): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\main.cpp(38): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\main.cpp(70): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\main.cpp(71): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\main.cpp(110): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\main.cpp(251): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\main.cpp(271): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\main.cpp(435): warning C4244: 'argument' : conversion de 'GLfloat' en 'const int', perte possible de données
+     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_jw\myproj\main.cpp(449): warning C4305: 'argument' : troncation de 'double' à 'GLclampf'
+         GLM: perspective function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
+         GLM: rotate function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_JW\Debug\myproj.exe" /INCREMENTAL /NOLOGO freeglut.lib glu32.lib opengl32.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_JW\Debug\myproj.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_JW\Debug\myproj.lib" /MACHINE:X86 Debug\main.obj
+         Debug\myMaterial.obj
+         Debug\myproj.obj
+         Debug\myTexture.obj
+         Debug\point3d.obj
+         Debug\shaders.obj
+         Debug\stdafx.obj
+         Debug\vector3d.obj
+     1>LINK : warning LNK4067: point d'entrÚe ambiguá; 'mainCRTStartup' sÚlectionnÚ
+         myproj.vcxproj -> E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_JW\Debug\myproj.exe
+     1>Génération du projet "E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_JW\myproj\myproj.vcxproj" terminée (Build cible(s)).
+
+La génération a réussi.
+
+Temps écoulé 00:00:01.83
