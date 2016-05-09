@@ -1,81 +1,65 @@
-﻿La génération a démarré 09/05/2016 00:21:53.
-     1>Projet "E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_stencils\myproj\myproj.vcxproj" sur le nœud 2 (Build cible(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Yu"stdafx.h" /Fp"Release\myproj.pch" /Fo"Release\\" /Fd"Release\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
-         main.cpp
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(86): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(87): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(88): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(138): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(139): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(140): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(142): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(143): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(144): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(170): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(171): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(172): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(235): warning C4018: '<' : incompatibilité signed/unsigned
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(240): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(289): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(290): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(291): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(293): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(294): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(295): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(325): warning C4101: 'k' : variable locale non référencée
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(387): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(391): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(395): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(412): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(413): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(414): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(426): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(427): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(490): warning C4018: '<' : incompatibilité signed/unsigned
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(592): warning C4018: '<' : incompatibilité signed/unsigned
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(658): warning C4018: '<' : incompatibilité signed/unsigned
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(699): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(700): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(711): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(716): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(730): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(731): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(743): warning C4018: '<' : incompatibilité signed/unsigned
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(761): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(762): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(795): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(798): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myObject3D.h(806): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-     1>e:\document\cours\cours e4-fi\cours_opengl\projet\opengl\startingcode_stencils\myproj\myLight.h(31): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
-     1>main.cpp(30): warning C4305: 'initialisation' : troncation de 'double' à 'float'
-     1>main.cpp(67): warning C4305: 'initialisation' : troncation de 'double' à 'float'
-     1>main.cpp(68): warning C4305: 'initialisation' : troncation de 'double' à 'float'
-     1>main.cpp(134): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>main.cpp(275): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>main.cpp(295): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
-     1>main.cpp(684): warning C4244: 'argument' : conversion de 'GLfloat' en 'const int', perte possible de données
-     1>main.cpp(698): warning C4305: 'argument' : troncation de 'double' à 'GLclampf'
-         GLM: perspective function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
-         GLM: rotate function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_stencils\Release\myproj.exe" /INCREMENTAL:NO /NOLOGO freeglut.lib glu32.lib opengl32.lib glew32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_stencils\Release\myproj.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG:incremental /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_stencils\Release\myproj.lib" /MACHINE:X86 /SAFESEH Release\main.obj
-         Release\myMaterial.obj
-         Release\myproj.obj
-         Release\myTexture.obj
-         Release\point3d.obj
-         Release\shaders.obj
-         Release\stdafx.obj
-         Release\vector3d.obj
-     1>LINK : warning LNK4067: point d'entrée ambigu ; 'mainCRTStartup' sélectionné
-         Génération de code en cours
-         9 of 763 functions ( 1.2%) were compiled, the rest were copied from previous compilation.
-           0 functions were new in current compilation
-           0 functions had inline decision re-evaluated but remain unchanged
-         Fin de la génération du code
-         myproj.vcxproj -> E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_stencils\Release\myproj.exe
-     1>Génération du projet "E:\document\cours\Cours E4-FI\Cours_OpenGL\Projet\openGL\startingcode_stencils\myproj\myproj.vcxproj" terminée (Build cible(s)).
-
-La génération a réussi.
-
-Temps écoulé 00:00:01.26
+﻿  main.cpp
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(86): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(87): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(88): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(138): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(139): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(140): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(142): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(143): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(144): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(170): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(171): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(172): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(235): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(240): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(289): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(290): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(291): warning C4244: '-=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(293): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(294): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(295): warning C4244: '/=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(325): warning C4101: 'k' : variable locale non référencée
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(387): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(391): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(395): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(412): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(413): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(414): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(426): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(427): warning C4244: 'argument' : conversion de 'double' en 'const float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(490): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(592): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(658): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(699): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(700): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(711): warning C4244: 'initialisation' : conversion de 'float' en 'int', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(716): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(730): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(731): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(743): warning C4018: '<' : incompatibilité signed/unsigned
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(761): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(762): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(795): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(798): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myObject3D.h(806): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+c:\users\student\source\repos\e4fi_opengl_project\opengl\startingcode_stencils\myproj\myLight.h(31): warning C4244: 'argument' : conversion de 'double' en 'GLfloat', perte possible de données
+main.cpp(30): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+main.cpp(67): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+main.cpp(68): warning C4305: 'initialisation' : troncation de 'double' à 'float'
+main.cpp(141): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+main.cpp(282): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+main.cpp(302): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+main.cpp(688): warning C4244: 'argument' : conversion de 'GLfloat' en 'const int', perte possible de données
+main.cpp(702): warning C4305: 'argument' : troncation de 'double' à 'GLclampf'
+main.cpp(710): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+main.cpp(735): warning C4244: '=' : conversion de 'double' en 'float', perte possible de données
+  GLM: perspective function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
+  GLM: rotate function taking degrees as a parameter is deprecated. #define GLM_FORCE_RADIANS before including GLM headers to remove this message.
+LINK : warning LNK4067: point d'entrée ambigu ; 'mainCRTStartup' sélectionné
+  Génération de code en cours
+  2 of 753 functions ( 0.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Fin de la génération du code
+  myproj.vcxproj -> C:\Users\student\Source\Repos\E4FI_OpenGL_Project\openGL\startingcode_stencils\Release\myproj.exe

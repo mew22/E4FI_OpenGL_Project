@@ -49,8 +49,8 @@ GLuint buffers[6];
 //Variables for objects models
 myObject3D *obj1;
 myObject3D *obj2;
-myObject3D *obj3;
-myObject3D *obj4;
+myObject3D *level;
+myObject3D *character;
 
 
 //Variables for lighting
@@ -92,7 +92,7 @@ void mouse(int button, int state, int x, int y)
   if (button_pressed == 1 && button == GLUT_LEFT_BUTTON) {
 	  cout << "portal1 created" << endl;
 
-	  portals[0].model_matrix = obj4->model_matrix;
+	  portals[0].model_matrix = character->model_matrix;
 	  portalsDirection[0] = camera_forward;
 	  portalsDirectionIteraction[0] = portalDistance;
 	  portalActivated[0] = true;
@@ -101,7 +101,7 @@ void mouse(int button, int state, int x, int y)
   if (button_pressed == 1 && button == GLUT_RIGHT_BUTTON) {
 	  cout << "portal2 created" << endl;
 
-	  portals[1].model_matrix = obj4->model_matrix;
+	  portals[1].model_matrix = character->model_matrix;
 	  portalsDirection[1] = camera_forward;
 	  portalsDirectionIteraction[1] = portalDistance;
 	  portalActivated[1] = true;
@@ -115,17 +115,24 @@ void mousedrag(int x, int y)
   //y = Glut_h - y;
 
   //change in the mouse position since last time
+
+
   int dx = x - GLUTmouse[0];
   int dy = y - GLUTmouse[1];
 
   GLUTmouse[0] = x;
   GLUTmouse[1] = y;
 
-  teta -= dx * sensitivity; phi -= dy * sensitivity;
+
+
+  teta -= dx * sensitivity;
+  
+  phi -= dy * sensitivity;
   if (phi > 89)
 	  phi = 89;
   else if (phi < -89)
 	  phi = -89;
+
 
   if (dx == 0 && dy == 0) return;
   /*if (button_pressed == 0) return;*/
@@ -136,11 +143,11 @@ void mousedrag(int x, int y)
   camera_forward.dY = sin(phi * PI / 180.0);
   camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
 
-  if (obj4 != nullptr) {
-	  obj4->translate(-camera_eye.X, 0, -camera_eye.Z);
-	  obj4->rotate(0, 1, 0, -arm_angle);
-	  obj4->rotate(0, 1, 0, teta);
-	  obj4->translate(camera_eye.X, 0, camera_eye.Z);
+  if (character != nullptr) {
+	  character->translate(-camera_eye.X, 0, -camera_eye.Z);
+	  character->rotate(0, 1, 0, -arm_angle);
+	  character->rotate(0, 1, 0, teta);
+	  character->translate(camera_eye.X, 0, camera_eye.Z);
 	  arm_angle = teta;
   }
  
@@ -200,13 +207,13 @@ void keyboard(unsigned char key, int x, int y) {
 		camera_eye.X += speedX * camera_forward.dX;
 		camera_eye.Z += speedZ * camera_forward.dZ;
 
-		obj4->translate(speedX * camera_forward.dX, 0, speedZ * camera_forward.dZ);
+		character->translate(speedX * camera_forward.dX, 0, speedZ * camera_forward.dZ);
 		break;
 	case  's':
 		camera_eye.X -= speedX * camera_forward.dX;
 		camera_eye.Z -= speedZ * camera_forward.dZ;
 
-		obj4->translate(-speedX * camera_forward.dX, 0, -speedZ * camera_forward.dZ);
+		character->translate(-speedX * camera_forward.dX, 0, -speedZ * camera_forward.dZ);
 		break;
 	case  'q':
 		//camera_eye.X -= speedX * cos(teta * PI / 180.0);
@@ -215,7 +222,7 @@ void keyboard(unsigned char key, int x, int y) {
 		camera_eye.X -= speedX * camera_right.dX;
 		camera_eye.Z -= speedZ * camera_right.dZ;
 
-		obj4->translate(-speedX * camera_right.dX, 0, -speedZ * camera_right.dZ);
+		character->translate(-speedX * camera_right.dX, 0, -speedZ * camera_right.dZ);
 		break;
 	case  'd':
 		//camera_eye.X += speedX * cos(teta * PI / 180.0);
@@ -224,7 +231,7 @@ void keyboard(unsigned char key, int x, int y) {
 		camera_eye.X += speedX * camera_right.dX;
 		camera_eye.Z += speedZ * camera_right.dZ;
 
-		obj4->translate(speedX * camera_right.dX, 0, speedZ * camera_right.dZ);
+		character->translate(speedX * camera_right.dX, 0, speedZ * camera_right.dZ);
 		break;
 	}
 	camera_target.dX = camera_eye.X + camera_forward.dX;
@@ -269,7 +276,7 @@ void keyboard2(int key, int x, int y) {
 	case GLUT_KEY_LEFT:
 		/*camera_up.normalize();
 		camera_forward.rotate(camera_up, 0.1);
-		//obj4->rotate(0, 1, 0, 0.1 * 180 / PI);
+		//character->rotate(0, 1, 0, 0.1 * 180 / PI);
 		camera_forward.normalize();*/
 
 		r_temp = cos(phi * PI / 180);
@@ -277,11 +284,11 @@ void keyboard2(int key, int x, int y) {
 		camera_forward.dX = sin(teta * PI / 180.0) * r_temp;
 		camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
 
-		if (obj4 != nullptr) {
-			obj4->translate(-camera_eye.X, 0, -camera_eye.Z);
-			obj4->rotate(0, 1, 0, -arm_angle);
-			obj4->rotate(0, 1, 0, teta);
-			obj4->translate(camera_eye.X, 0, camera_eye.Z);
+		if (character != nullptr) {
+			character->translate(-camera_eye.X, 0, -camera_eye.Z);
+			character->rotate(0, 1, 0, -arm_angle);
+			character->rotate(0, 1, 0, teta);
+			character->translate(camera_eye.X, 0, camera_eye.Z);
 			arm_angle = teta;
 		}
 		break;
@@ -289,7 +296,7 @@ void keyboard2(int key, int x, int y) {
 	case GLUT_KEY_RIGHT:
 		/*camera_up.normalize();
 		camera_forward.rotate(camera_up, -0.1);
-		//obj4->rotate(0, 1, 0, -0.1 * 180 / PI);
+		//character->rotate(0, 1, 0, -0.1 * 180 / PI);
 		camera_forward.normalize();*/
 
 		r_temp = cos(phi * PI / 180);
@@ -297,11 +304,11 @@ void keyboard2(int key, int x, int y) {
 		camera_forward.dX = sin(teta * PI / 180.0) * r_temp;
 		camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
 
-		if (obj4 != nullptr) {
-			obj4->translate(-camera_eye.X, 0, -camera_eye.Z);
-			obj4->rotate(0, 1, 0, -arm_angle);
-			obj4->rotate(0, 1, 0, teta);
-			obj4->translate(camera_eye.X, 0, camera_eye.Z);
+		if (character != nullptr) {
+			character->translate(-camera_eye.X, 0, -camera_eye.Z);
+			character->rotate(0, 1, 0, -arm_angle);
+			character->rotate(0, 1, 0, teta);
+			character->translate(camera_eye.X, 0, camera_eye.Z);
 			arm_angle = teta;
 		}
 		break;
@@ -362,6 +369,12 @@ void display()
 	glUniformMatrix4fv(view_matrix_loc, 1, GL_FALSE, &view_matrix[0][0]);
 	glUniformMatrix4fv(normal_matrix_loc, 1, GL_FALSE, &normal_matrix[0][0]);
 
+
+	GLboolean save_color_mask[4];
+	GLboolean save_depth_mask;
+	glGetBooleanv(GL_COLOR_WRITEMASK, save_color_mask);
+	glGetBooleanv(GL_DEPTH_WRITEMASK, &save_depth_mask);
+
 	if (portalActivated[0]) {
 
 
@@ -369,20 +382,16 @@ void display()
 		glUniformMatrix4fv(view_matrix_loc, 1, GL_FALSE, &portal_cam[0][0]);
 		glm::mat3 portal_normal_matrix = glm::transpose(glm::inverse(glm::mat3(portal_cam)));
 		glUniformMatrix4fv(normal_matrix_loc, 1, GL_FALSE, &portal_normal_matrix[0][0]);
-		obj3->displayScene(portal_cam);
-		obj4->displayScene(portal_cam);
-		portals[0].displayScene(portal_cam);
-		portals[1].displayScene(portal_cam);
+		level->displayScene(portal_cam);
+		character->displayScene(portal_cam);
+		//portals[0].displayScene(portal_cam);
+		//portals[1].displayScene(portal_cam);
 
 		//glFlush();
 
-		GLboolean save_color_mask[4];
-		GLboolean save_depth_mask;
-		glGetBooleanv(GL_COLOR_WRITEMASK, save_color_mask);
-		glGetBooleanv(GL_DEPTH_WRITEMASK, &save_depth_mask);
 
 		glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
-		glDepthMask(GL_FALSE);
+		glDepthMask(GL_TRUE);
 		glStencilFunc(GL_NEVER, 0, 0xFF);
 		glStencilOp(GL_INCR, GL_KEEP, GL_KEEP);  // draw 1s on test fail (always)
 												 // draw stencil pattern
@@ -396,30 +405,25 @@ void display()
 		// Fill 1 or more 
 		glStencilFunc(GL_LEQUAL, 1, 0xFF);
 
-		glColorMask(save_color_mask[0], save_color_mask[1], save_color_mask[2], save_color_mask[3]);
-		glDepthMask(save_depth_mask);
 		glUniformMatrix4fv(view_matrix_loc, 1, GL_FALSE, &portal_cam[0][0]);
 		// -Ready to draw main scene-
 
 	}
+
 	if (portalActivated[1]) {
 
 		glm::mat4 portal_cam2 = portal_view(view_matrix, portals[1], portals[0]);
 		glUniformMatrix4fv(view_matrix_loc, 1, GL_FALSE, &portal_cam2[0][0]);
 		glm::mat3 portal_normal_matrix2 = glm::transpose(glm::inverse(glm::mat3(portal_cam2)));
 		glUniformMatrix4fv(normal_matrix_loc, 1, GL_FALSE, &portal_normal_matrix2[0][0]);
-		obj3->displayScene(portal_cam2);
-		obj4->displayScene(portal_cam2);
-		portals[0].displayScene(portal_cam2);
-		portals[1].displayScene(portal_cam2);
+		level->displayScene(portal_cam2);
+		character->displayScene(portal_cam2);
+		//portals[0].displayScene(portal_cam2);
+		//portals[1].displayScene(portal_cam2);
 
 
 		//glFlush();
 
-		GLboolean save_color_mask[4];
-		GLboolean save_depth_mask;
-		glGetBooleanv(GL_COLOR_WRITEMASK, save_color_mask);
-		glGetBooleanv(GL_DEPTH_WRITEMASK, &save_depth_mask);
 
 		glColorMask(GL_FALSE, GL_FALSE, GL_FALSE, GL_FALSE);
 		glDepthMask(GL_FALSE);
@@ -436,12 +440,12 @@ void display()
 		// Fill 1 or more 
 		glStencilFunc(GL_LEQUAL, 1, 0xFF);
 
-		glColorMask(save_color_mask[0], save_color_mask[1], save_color_mask[2], save_color_mask[3]);
-		glDepthMask(save_depth_mask);
 		glUniformMatrix4fv(view_matrix_loc, 1, GL_FALSE, &portal_cam2[0][0]);
 		// -Ready to draw main scene-
 
 	}
+	glColorMask(save_color_mask[0], save_color_mask[1], save_color_mask[2], save_color_mask[3]);
+	glDepthMask(save_depth_mask);
 /*
 	if (portalActivated[0]) {
 
@@ -475,8 +479,8 @@ void display()
 		glUniformMatrix4fv(view_matrix_loc, 1, GL_FALSE, &portal_cam[0][0]);
 		glm::mat3 portal_normal_matrix = glm::transpose(glm::inverse(glm::mat3(portal_cam)));
 		glUniformMatrix4fv(normal_matrix_loc, 1, GL_FALSE, &portal_normal_matrix[0][0]);
-		obj3->displayScene(portal_cam);
-		obj4->displayScene(portal_cam);
+		level->displayScene(portal_cam);
+		character->displayScene(portal_cam);
 		portals[0].displayScene(portal_cam);
 		portals[1].displayScene(portal_cam);
 		glUniformMatrix4fv(view_matrix_loc, 1, GL_FALSE, &portal_cam[0][0]);
@@ -517,8 +521,8 @@ void display()
 		glUniformMatrix4fv(view_matrix_loc, 1, GL_FALSE, &portal_cam2[0][0]);
 		glm::mat3 portal_normal_matrix2 = glm::transpose(glm::inverse(glm::mat3(portal_cam2)));
 		glUniformMatrix4fv(normal_matrix_loc, 1, GL_FALSE, &portal_normal_matrix2[0][0]);
-		obj3->displayScene(portal_cam2);
-		obj4->displayScene(portal_cam2);
+		level->displayScene(portal_cam2);
+		character->displayScene(portal_cam2);
 		portals[0].displayScene(portal_cam2);
 		portals[1].displayScene(portal_cam2);
 		glUniformMatrix4fv(view_matrix_loc, 1, GL_FALSE, &portal_cam2[0][0]);
@@ -538,8 +542,8 @@ void display()
 		lights[i].drawLight(shaderprogram1);
 	}
 
-	obj3->displayScene(view_matrix);
-	obj4->displayScene(view_matrix);
+	level->displayScene(view_matrix);
+	character->displayScene(view_matrix);
 
 
 	/*if (portalActivated[1]) {
@@ -627,24 +631,24 @@ void init()
 	portals[1].createObjectBuffers();
 
 	// Maya Scene
-	obj3 = new myObject3D(shaderprogram1);
-	//obj3->readScene("test.obj");
-	//obj3->readScene("TheCarnival.obj");
-	obj3->readScene("portaltri4scale.obj");
-	if (obj3->normals.size() == 0)
-		obj3->computeNormals();
-	obj3->createObjectBuffers();
+	level = new myObject3D(shaderprogram1);
+	//level->readScene("test.obj");
+	//level->readScene("TheCarnival.obj");
+	level->readScene("portaltri4scale.obj");
+	if (level->normals.size() == 0)
+		level->computeNormals();
+	level->createObjectBuffers();
 
 
 	// Personnage iron man
-	obj4 = new myObject3D(shaderprogram1);
-	obj4->readScene("IronMan2.obj");
-	if (obj4->normals.size() == 0)
-		obj4->computeNormals();
-	obj4->createObjectBuffers();
-	obj4->scale(0.008, 0.008, 0.008);
-	obj4->translate(camera_eye.X, 2, camera_eye.Z);
-	//obj4->rotate(0,1,0,180);
+	character = new myObject3D(shaderprogram1);
+	character->readScene("IronMan2.obj");
+	if (character->normals.size() == 0)
+		character->computeNormals();
+	character->createObjectBuffers();
+	character->scale(0.008, 0.008, 0.008);
+	character->translate(camera_eye.X, 2, camera_eye.Z);
+	//character->rotate(0,1,0,180);
 
 	// 3.5
 	nbLight = 1;
@@ -700,6 +704,59 @@ void init()
 }
 void animation(void)
 {
+	if (GLUTmouse[0] > Glut_w - 10) {
+		teta -= 10 * sensitivity;
+		//float rayon = sqrt(pow(dx, 2) + pow(dy, 2));
+		r_temp = cos(phi * PI / 180);
+		camera_forward.dX = sin(teta * PI / 180.0) * r_temp;
+		camera_forward.dY = sin(phi * PI / 180.0);
+		camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
+
+		if (character != nullptr) {
+			character->translate(-camera_eye.X, 0, -camera_eye.Z);
+			character->rotate(0, 1, 0, -arm_angle);
+			character->rotate(0, 1, 0, teta);
+			character->translate(camera_eye.X, 0, camera_eye.Z);
+			arm_angle = teta;
+		}
+
+		//double theta = 4.0 * (fabs(vx) + fabs(vy));
+
+		camera_right = camera_forward.crossproduct(camera_up);
+		camera_right.normalize();
+
+		camera_target.dX = camera_eye.X + camera_forward.dX;
+		camera_target.dY = camera_eye.Y + camera_forward.dY;
+		camera_target.dZ = camera_eye.Z + camera_forward.dZ;
+	}
+	else if (GLUTmouse[0] < 15) {
+		teta += 10 * sensitivity;
+		//float rayon = sqrt(pow(dx, 2) + pow(dy, 2));
+		r_temp = cos(phi * PI / 180);
+		camera_forward.dX = sin(teta * PI / 180.0) * r_temp;
+		camera_forward.dY = sin(phi * PI / 180.0);
+		camera_forward.dZ = cos(teta * PI / 180.0) * r_temp;
+
+		if (character != nullptr) {
+			character->translate(-camera_eye.X, 0, -camera_eye.Z);
+			character->rotate(0, 1, 0, -arm_angle);
+			character->rotate(0, 1, 0, teta);
+			character->translate(camera_eye.X, 0, camera_eye.Z);
+			arm_angle = teta;
+		}
+
+		//double theta = 4.0 * (fabs(vx) + fabs(vy));
+
+		camera_right = camera_forward.crossproduct(camera_up);
+		camera_right.normalize();
+
+		camera_target.dX = camera_eye.X + camera_forward.dX;
+		camera_target.dY = camera_eye.Y + camera_forward.dY;
+		camera_target.dZ = camera_eye.Z + camera_forward.dZ;
+	}
+
+
+
 	if (portalsDirectionIteraction[0] != 0) {
 		//portals[0].translate(portalsDirection[0].dX, portalsDirection[0].dY, portalsDirection[0].dZ);
 		portals[0].translate(portalsDirection[0].dX, 0, portalsDirection[0].dZ);
@@ -737,6 +794,7 @@ int main(int argc, char* argv[]) {
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_STENCIL_TEST);
 	glDepthFunc(GL_LEQUAL);
 	glEnable(GL_CULL_FACE);
 	glDepthFunc(GL_LESS) ;
