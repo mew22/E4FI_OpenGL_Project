@@ -1,2 +1,2 @@
-#TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit:WindowsTargetPlatformVersion=8.1
-Release|Win32|C:\Users\student\Source\Repos\E4FI_OpenGL_Project\openGL\startingcode_stencils\|
+#TargetFrameworkVersion=v4.0:PlatformToolSet=v140:EnableManagedIncrementalBuild=false:VCToolArchitecture=Native32Bit
+Release|Win32|C:\Users\Arnaud Lam\Source\Repos\E4FI_OpenGL_Project2\openGL\startingcode_stencils\|
